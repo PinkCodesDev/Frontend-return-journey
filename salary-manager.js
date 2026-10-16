@@ -1,22 +1,35 @@
-function createSalaryManager(developerName, initialSalary) {
-    let currentSalary = initialSalary;
-    function addRaise(amount) {
-        currentSalary += amount;
-        let status = "Regular Salary"
-        if(currentSalary > 10000)
-            status = "Senior Salary";
-        else
-            status = "Regular Salary";
-        return `${developerName}: ${currentSalary} - ${status}`;
+function createDeveloperTeam(teamName){
+    let developers = [];
+
+    function addDeveloper(developerName, salary) {
+        let developer = {
+            name: developerName,
+            salary: salary
+        };
+        developers.push(developer);
+        return `${developer.name} added to ${teamName}`;
     }
-    return addRaise;
+
+    function getHighEarners() {
+        return developers.filter(developer => developer.salary >= 10000).map(developer => `${developer.name} earns ${developer.salary} PLN`)
+    }
+
+        return {
+        addDeveloper,
+        getHighEarners
+    };
 }
 
-const alanSalary = createSalaryManager("Alan", 6000);
-const annaSalary = createSalaryManager("Anna", 9000);
 
-console.log(alanSalary(2000));
-console.log(annaSalary(1500));
-console.log(alanSalary(3000));
-console.log(annaSalary(500));
-console.log(alanSalary(1000));
+const frontendTeam = createDeveloperTeam("Frontend Team");
+const backendTeam = createDeveloperTeam("Backend Team");
+
+frontendTeam.addDeveloper("Anna", 12000);
+frontendTeam.addDeveloper("Kamil", 8000);
+frontendTeam.addDeveloper("Robert", 11000);
+
+backendTeam.addDeveloper("Alan", 15000);
+backendTeam.addDeveloper("Marta", 9000);
+
+console.log(frontendTeam.getHighEarners());
+console.log(backendTeam.getHighEarners());
