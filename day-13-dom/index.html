@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 13 — Panel projektu</title>
+    <script src="./main.js" defer></script>
+
+    <style>
+    .project-card {
+        padding: 24px;
+        border: 2px solid gray;
+        border-radius: 12px;
+    }
+
+    .active {
+        border-color: green;
+        background-color: #e8f5e9;
+    }
+</style>
+</head>
+<body>
+    <main class="project-card">
+        <h1 id="project-title">PlatinumOS</h1>
+        <label for="project-name">Nazwa projektu:</label>
+        <input id="project-name" type="text" placeholder="Wpisz nazwę">
+        <button id="save-name-button" type="button">Zapisz nazwę</button>
+        <p id="project-status" aria-live="polite">Status: nieaktywny</p>
+        <button id="activate-button" type="button" aria-pressed="false">Aktywuj projekt</button>
+    </main>
+</body>
+</html>
